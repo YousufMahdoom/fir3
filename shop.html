@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VOLTERRA // Running Footwear Catalog — High Velocity Lab</title>
+  <meta name="description" content="VOLTERRA CONCEPT 02: Built to Outrun. Agency-grade performance footwear engineered with supercritical nitrogen foam and curved carbon propulsion plates.">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/telemetry.css">
+</head>
+<body>
+
+  <!-- Top Telemetry Ticker -->
+  <div class="top-telemetry-ticker">
+    <div class="ticker-left">
+      <span class="pulse-indicator"></span>
+      <span>VOLTERRA KINETIC LAB // FRANKFURT NODE 4</span>
+      <span style="opacity: 0.5;">|</span>
+      <span>LAT: 50.1109° N, 8.6821° E</span>
+      <span style="opacity: 0.5;">|</span>
+      <span style="color: var(--volt-green);">100Hz BLE STREAM ACTIVE</span>
+    </div>
+    <div style="display: flex; gap: 20px; align-items: center;">
+      <span>50KM TRIAL RUN GUARANTEE // 100% REFUND ACTIVE</span>
+      <span style="opacity: 0.5;">|</span>
+      <span style="color: var(--electric-blue);">FREE EXPRESS GLOBAL SHIPPING OVER $100</span>
+    </div>
+  </div>
+
+  <!-- Primary Site Header -->
+  <header class="site-header">
+    <div class="header-container">
+      <div class="brand-logo-wrap">
+        <a href="index.html" class="brand-logo" id="brandLogoLink">
+          VOLTERRA
+          <span class="brand-badge">C-02</span>
+        </a>
+      </div>
+
+      <nav>
+        <ul class="nav-links">
+          <li>
+            <a href="index.html" class="nav-link ">Storefront</a>
+          </li>
+          <li>
+            <a href="shop.html" class="nav-link active">Footwear Catalog</a>
+          </li>
+          <li>
+            <a href="product.html" class="nav-link ">X-RACE 01</a>
+          </li>
+          <li>
+            <a href="technology.html" class="nav-link ">Technology</a>
+          </li>
+          <li>
+            <a href="locker.html" class="nav-link ">Athlete Locker</a>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="locker.html" class="action-btn" title="Elena Vance Athlete Profile">
+          <span class="pulse-indicator" style="background: var(--electric-blue);"></span>
+          <span>@ELENA.VANCE</span>
+        </a>
+
+        <button type="button" class="cart-toggle-btn" onclick="VOLTERRA_CART.openDrawer()" aria-label="Open Cart Drawer">
+          <span>BAG</span>
+          <span class="cart-count-badge">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+<main style="padding: 60px 32px 100px; max-width: 1440px; margin: 0 auto;">
+
+  <!-- Hero / Catalog Header -->
+  <div style="background: linear-gradient(135deg, #0b1f3a 0%, #051020 100%); border: 1px solid var(--border-dark-highlight); border-radius: var(--radius-lg); padding: 48px; margin-bottom: 40px; position: relative; overflow: hidden;">
+    <div class="hero-laser-grid" style="opacity: 0.35;"></div>
+    
+    <div style="position: relative; z-index: 10; max-width: 780px;">
+      <div class="mono-tag" style="color: var(--electric-blue); margin-bottom: 12px;">
+        RUNNING / FOOTWEAR // HIGH VELOCITY LAB
+      </div>
+      <h1 style="font-size: clamp(2.8rem, 5vw, 4.2rem); font-weight: 900; color: #ffffff; text-transform: uppercase; margin-bottom: 16px; line-height: 1;">
+        RUN FASTER.
+      </h1>
+      <p style="color: var(--text-secondary); font-size: 1.1rem; line-height: 1.6; margin-bottom: 24px;">
+        Engineered footwear for every pace, distance, and ambition. Supercritical nitrogen foam matrixes, curved carbon composite propulsion plates, and aerodynamic lockdown.
+      </p>
+
+      <div style="display: flex; gap: 16px; flex-wrap: wrap; font-family: var(--font-mono); font-size: 0.75rem;">
+        <span class="badge-blue">LAB TESTED // VOL. 02</span>
+        <span class="badge-orange">CHASSIS ROTATION INDEXED</span>
+        <span class="badge-volt">50KM TRIAL GUARANTEE ACTIVE</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Catalog Controls & Discipline Filter Pills -->
+  <div class="catalog-controls-bar" style="background: var(--bg-navy-surface); border: 1px solid var(--border-dark); border-radius: var(--radius-md); padding: 20px 28px; margin-bottom: 36px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;">
+    
+    <!-- Filter Pills -->
+    <div style="display: flex; gap: 8px; flex-wrap: wrap;" id="disciplineFilterPills">
+      <button type="button" class="action-btn" style="background: var(--electric-blue); color: #ffffff; border-color: var(--electric-blue);" onclick="filterDiscipline('all', this)">
+        ALL RUNNING (8)
+      </button>
+      <button type="button" class="action-btn" onclick="filterDiscipline('marathon', this)">
+        MARATHON & ROAD (3)
+      </button>
+      <button type="button" class="action-btn" onclick="filterDiscipline('tempo', this)">
+        SPEED & TEMPO (2)
+      </button>
+      <button type="button" class="action-btn" onclick="filterDiscipline('trail', this)">
+        TRAIL & ULTRA (2)
+      </button>
+      <button type="button" class="action-btn" onclick="filterDiscipline('track', this)">
+        TRACK & 5K (1)
+      </button>
+    </div>
+
+    <!-- Search & Sort Controls -->
+    <div style="display: flex; gap: 14px; align-items: center;">
+      <input type="text" id="catalogSearchInput" placeholder="Search chassis specs, foam..." oninput="handleCatalogSearch(this.value)" style="background: var(--bg-midnight-dark); border: 1px solid var(--border-dark); color: #ffffff; padding: 10px 16px; border-radius: var(--radius-pill); font-family: var(--font-mono); font-size: 0.78rem; width: 220px;">
+      
+      <select id="catalogSortSelect" onchange="handleCatalogSort(this.value)" style="background: var(--bg-midnight-dark); border: 1px solid var(--border-dark); color: #ffffff; padding: 10px 16px; border-radius: var(--radius-pill); font-family: var(--font-mono); font-size: 0.78rem;">
+        <option value="featured">Featured / Lab Pick</option>
+        <option value="price-low">Price: Low to High</option>
+        <option value="price-high">Price: High to Low</option>
+        <option value="weight">Lightest Weight</option>
+        <option value="rating">Highest Rating</option>
+      </select>
+    </div>
+
+  </div>
+
+  <!-- Products Grid (4-Column Layout with Integrated Editorial Tile) -->
+  <div class="product-cards-grid" id="catalogProductsGrid">
+    <!-- Rendered dynamically by script below -->
+  </div>
+
+  <!-- Integrated Speed Lab Dispatch Tile -->
+  <div class="speed-lab-dispatch-tile">
+    <div>
+      <span class="badge-orange mono-tag" style="margin-bottom: 12px;">THE SPEED LAB DISPATCH</span>
+      <h2 style="font-size: clamp(1.6rem, 3.5vw, 2.2rem); color: #ffffff; text-transform: uppercase; margin: 10px 0 14px;">
+        HOW CURVED CARBON GEOMETRY REDUCES SOLEUS FATIGUE BY 21.4%
+      </h2>
+      <p style="color: var(--text-secondary); line-height: 1.7; font-size: 0.98rem;">
+        Biomechanical lab testing demonstrates that the 3K spoon-shaped carbon plate accelerates forward lever projection, shifting ground-contact force away from calf tendons during the crucial 30KM–42.2KM marathon wall.
+      </p>
+      <div style="margin-top: 24px;">
+        <a href="technology.html" class="btn-primary" style="font-size: 0.82rem; padding: 12px 24px;">READ FULL LAB REPORT →</a>
+      </div>
+    </div>
+
+    <div style="background: rgba(4, 12, 23, 0.7); border: 1px solid var(--border-dark); border-radius: var(--radius-sm); padding: 24px;">
+      <div class="mono-tag" style="color: var(--volt-green); margin-bottom: 12px;">LAB GAIT TELEMETRY BENCHMARK</div>
+      <div style="display: flex; flex-direction: column; gap: 12px;">
+        <div style="display: flex; justify-content: space-between; font-size: 0.85rem;">
+          <span style="color: var(--text-secondary);">Ground Contact Time:</span>
+          <strong style="color: #ffffff;">161ms vs 214ms Standard</strong>
+        </div>
+        <div style="display: flex; justify-content: space-between; font-size: 0.85rem;">
+          <span style="color: var(--text-secondary);">Kinetic Energy Rebound:</span>
+          <strong style="color: var(--volt-green);">89.4% Dual AeroFoam™</strong>
+        </div>
+        <div style="display: flex; justify-content: space-between; font-size: 0.85rem;">
+          <span style="color: var(--text-secondary);">Vertical Oscillation:</span>
+          <strong style="color: #ffffff;">6.2cm (Elite Forward Focus)</strong>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 30-Day / 50KM Trial Run Policy Banner -->
+  <div class="policy-trial-banner">
+    <div>
+      <h3 style="font-size: 1.4rem; color: #ffffff; text-transform: uppercase; margin-bottom: 6px;">
+        ⚡ 30-DAY / 50KM TRIAL RUN GUARANTEE
+      </h3>
+      <p style="color: var(--text-secondary); font-size: 0.92rem; max-width: 680px;">
+        Put 50 kilometers on any VOLTERRA chassis on outdoor road or track. If you do not break your pace or feel the propulsion advantage, return them for a 100% money-back refund. No questions asked.
+      </p>
+    </div>
+    <a href="checkout.html" class="btn-primary" style="background: var(--volt-green); color: #020914;">
+      EXPLORE GUARANTEED MODELS →
+    </a>
+  </div>
+
+</main>
+
+<script>
+let currentDiscipline = 'all';
+let currentSearch = '';
+let currentSort = 'featured';
+
+function renderCatalog() {
+  const grid = document.getElementById('catalogProductsGrid');
+  if (!grid || typeof VOLTERRA_PRODUCTS === 'undefined') return;
+
+  let list = [...VOLTERRA_PRODUCTS];
+
+  // Discipline Filter
+  if (currentDiscipline !== 'all') {
+    list = list.filter(p => p.discipline === currentDiscipline);
+  }
+
+  // Search Filter
+  if (currentSearch) {
+    const q = currentSearch.toLowerCase();
+    list = list.filter(p => p.title.toLowerCase().includes(q) || p.shortDesc.toLowerCase().includes(q) || p.categoryName.toLowerCase().includes(q));
+  }
+
+  // Sorting
+  if (currentSort === 'price-low') {
+    list.sort((a, b) => a.price - b.price);
+  } else if (currentSort === 'price-high') {
+    list.sort((a, b) => b.price - a.price);
+  } else if (currentSort === 'weight') {
+    list.sort((a, b) => parseInt(a.weight) - parseInt(b.weight));
+  } else if (currentSort === 'rating') {
+    list.sort((a, b) => b.rating - a.rating);
+  }
+
+  if (list.length === 0) {
+    grid.innerHTML = `
+      <div style="grid-column: 1 / -1; text-align: center; padding: 60px 20px; font-family: var(--font-mono); color: var(--text-muted);">
+        NO CHASSIS MATCHED FILTER CRITERIA // RESET SEARCH
+      </div>
+    `;
+    return;
+  }
+
+  grid.innerHTML = list.map(prod => `
+    <div class="product-card">
+      <div class="product-media-wrap">
+        <span class="badge-${prod.badgeType} product-badge-float">${prod.badge}</span>
+        <button type="button" class="wishlist-float-btn" aria-label="Save to Wishlist">♡</button>
+        
+        <a href="product.html" class="card-shoe-media">
+          <img src="${prod.image || 'assets/images/x-race-01.jpg'}" alt="${prod.title}" class="product-card-photo" loading="lazy">
+        </a>
+      </div>
+
+      <div class="product-info-wrap">
+        <div class="product-meta-row">
+          <span class="mono-tag" style="color: var(--text-dark-secondary);">${prod.weight} CHASSIS</span>
+          <span class="product-rating">★ ${prod.rating} (${prod.reviewsCount})</span>
+        </div>
+
+        <a href="product.html">
+          <h3 class="product-title">${prod.title}</h3>
+        </a>
+        <div class="product-category-sub">${prod.subtitle}</div>
+
+        <div class="product-specs-chip-bar">
+          <span>⚡ ${prod.energyReturn}</span>
+          <span>•</span>
+          <span>${prod.heelDrop} DROP</span>
+          <span>•</span>
+          <span>CARBON</span>
+        </div>
+
+        <div class="product-price-action-row">
+          <div class="card-price">$${prod.price.toFixed(2)}</div>
+          <button type="button" class="card-quick-add-btn" onclick="quickAddProduct('${prod.id}', 'US M 9.0')">
+            + QUICK ADD
+          </button>
+        </div>
+      </div>
+    </div>
+  `).join('');
+
+  // Dispatch event for 3D physics and tilt initialization
+  window.dispatchEvent(new CustomEvent('catalogRendered'));
+}
+
+function filterDiscipline(disc, btn) {
+  currentDiscipline = disc;
+  document.querySelectorAll('#disciplineFilterPills .action-btn').forEach(b => {
+    b.style.background = 'transparent';
+    b.style.borderColor = 'var(--border-dark)';
+    b.style.color = 'var(--text-primary-light)';
+  });
+  if (btn) {
+    btn.style.background = 'var(--electric-blue)';
+    btn.style.borderColor = 'var(--electric-blue)';
+    btn.style.color = '#ffffff';
+  }
+  renderCatalog();
+}
+
+function handleCatalogSearch(val) {
+  currentSearch = val;
+  renderCatalog();
+}
+
+function handleCatalogSort(val) {
+  currentSort = val;
+  renderCatalog();
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  renderCatalog();
+});
+</script>
+
+  <!-- Newsletter & Brand Lab Transition Banner -->
+  <section style="background: linear-gradient(180deg, var(--bg-deep-navy) 0%, var(--bg-midnight-dark) 100%); padding: 60px 24px; border-top: 1px solid var(--border-dark);">
+    <div class="newsletter-banner-box">
+      <div>
+        <div class="mono-tag" style="color: var(--electric-blue); margin-bottom: 8px;">// ATHLETE TELEMETRY DISPATCH</div>
+        <h2 style="font-size: clamp(1.8rem, 4vw, 2.2rem); color: #ffffff; text-transform: uppercase;">READY TO OUTRUN?</h2>
+        <p style="color: var(--text-secondary); max-width: 500px; margin-top: 8px;">
+          Join 14,000+ athletes receiving real-time race telemetry reports, limited lab prototype drops, and break-in protocols.
+        </p>
+      </div>
+
+      <form id="newsletterForm" class="newsletter-form-row">
+        <input type="email" placeholder="ENTER ATHLETE EMAIL / STRAVA ID" required style="flex-grow: 1; background: #061324; border: 1px solid var(--border-dark-highlight); color: #ffffff; padding: 14px 18px; border-radius: var(--radius-sm); font-family: var(--font-mono); font-size: 0.85rem;">
+        <button type="submit" class="btn-primary" style="padding: 14px 24px; white-space: nowrap;">JOIN THE LAB</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Master Site Footer -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-top-grid">
+        <div class="footer-brand-bio">
+          <div class="brand-logo" style="margin-bottom: 14px;">
+            VOLTERRA
+            <span class="brand-badge">CONCEPT 02</span>
+          </div>
+          <p>
+            Performance footwear engineered for speed, stability, and relentless movement. Supercritical nitrogen AeroFoam™ and curved carbon plate architectures validated across 14,000+ kilometers of road testing.
+          </p>
+          <div style="margin-top: 20px; font-family: var(--font-mono); font-size: 0.72rem; color: var(--electric-blue);">
+            FRANKFURT HIGH VELOCITY LAB // NODE 04
+          </div>
+        </div>
+
+        <div>
+          <div class="footer-col-title">Footwear Lab</div>
+          <ul class="footer-links-list">
+            <li><a href="shop.html?cat=marathon">Marathon & Road</a></li>
+            <li><a href="shop.html?cat=tempo">Tempo & Intervals</a></li>
+            <li><a href="shop.html?cat=trail">Technical Trail</a></li>
+            <li><a href="shop.html?cat=track">Short Track & 5K</a></li>
+            <li><a href="product.html">VOLTERRA X-RACE 01</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer-col-title">Innovations</div>
+          <ul class="footer-links-list">
+            <li><a href="technology.html#aerofoam">AeroFoam™ Nitrogen</a></li>
+            <li><a href="technology.html#flexcore">FlexCore™ Spoon Plate</a></li>
+            <li><a href="technology.html#gripx">Vibram® Grip-X Compound</a></li>
+            <li><a href="technology.html#windtunnel">Wind-Tunnel Testing</a></li>
+            <li><a href="technology.html#guarantee">50KM Trial Run Policy</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer-col-title">Athlete Hub</div>
+          <ul class="footer-links-list">
+            <li><a href="locker.html?tab=locker">Chassis Locker</a></li>
+            <li><a href="locker.html?tab=activerun">Live Run Stream (100Hz)</a></li>
+            <li><a href="locker.html?tab=postrun">Biomechanical Analysis</a></li>
+            <li><a href="locker.html?tab=strava">Strava Telemetry Sync</a></li>
+            <li><a href="checkout.html">Order Manifest</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom-row">
+        <div>© 2026 VOLTERRA KINETIC LAB. ALL RIGHTS RESERVED. // PROTOCOL C-02</div>
+        <div style="display: flex; gap: 24px;">
+          <span>PRIVACY PROTOCOL</span>
+          <span>DISPATCH TERMS</span>
+          <span>ISO-992 BIOMECHANICAL CERTIFICATION</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Mobile Bottom App Navigation Bar -->
+  <nav class="mobile-bottom-nav" aria-label="Mobile Navigation">
+    <a href="index.html" class="mob-nav-item ">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      <span>Store</span>
+    </a>
+    <a href="shop.html" class="mob-nav-item active">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+      <span>Catalog</span>
+    </a>
+    <a href="product.html" class="mob-nav-item ">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      <span>X-Race</span>
+    </a>
+    <a href="locker.html" class="mob-nav-item ">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      <span>Locker</span>
+    </a>
+    <button type="button" class="mob-nav-item" style="background: none; border: none; cursor: pointer;" onclick="VOLTERRA_CART.openDrawer()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+      <span>Bag (<span class="cart-count-badge">0</span>)</span>
+    </button>
+  </nav>
+
+  <!-- Include Cart Drawer & Scripts -->
+  <!-- Slide-over Cart Drawer Backdrop -->
+<div class="cart-backdrop" id="cartBackdrop">
+  <div class="cart-drawer-panel" id="cartDrawerPanel">
+    
+    <div class="drawer-header">
+      <div class="drawer-title">
+        <span>BAG / TELEMETRY INDEX</span>
+        <span class="badge-blue mono-tag">C-02</span>
+      </div>
+      <button type="button" class="drawer-close-btn" onclick="VOLTERRA_CART.closeDrawer()" aria-label="Close Bag">✕</button>
+    </div>
+
+    <!-- Free Shipping Progress Meter -->
+    <div class="free-ship-meter-wrap">
+      <div class="meter-text" id="freeShipText">
+        <span>⚡ FREE EXPRESS DISPATCH UNLOCKED ($149 / $100 QUALIFIED)</span>
+      </div>
+      <div class="meter-progress-track">
+        <div class="meter-progress-fill" id="freeShipFill" style="width: 100%;"></div>
+      </div>
+    </div>
+
+    <!-- Cart Items Scroll List -->
+    <div class="drawer-items-list" id="drawerItemsList">
+      <!-- Injected dynamically by VOLTERRA_CART.updateUI() -->
+    </div>
+
+    <!-- Recommended Add-ons -->
+    <div style="padding: 16px 24px; background: rgba(4, 12, 23, 0.6); border-top: 1px solid var(--border-dark);">
+      <div style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--text-secondary); margin-bottom: 8px;">
+        RECOMMENDED RACE DAY ACCESSORIES:
+      </div>
+      <div style="display: flex; gap: 8px;">
+        <button type="button" class="action-btn" style="padding: 6px 12px; font-size: 0.72rem;" onclick="VOLTERRA_CART.addItem({id:'socks', title:'PRO CARBON SOCKS', price:24.00, colors:[{name:'Stealth Carbon', hex:'#1687ff'}]})">
+          + PRO SOCKS ($24)
+        </button>
+        <button type="button" class="action-btn" style="padding: 6px 12px; font-size: 0.72rem;" onclick="VOLTERRA_CART.addItem({id:'flask', title:'SPEED NUTRITION FLASK', price:18.00, colors:[{name:'Aero Cyan', hex:'#00e599'}]})">
+          + FLASK ($18)
+        </button>
+      </div>
+    </div>
+
+    <!-- Drawer Footer -->
+    <div class="drawer-footer">
+      <div class="drawer-summary-row">
+        <span>Telemetry Subtotal</span>
+        <span id="drawerSubtotal">$0.00</span>
+      </div>
+      <div class="drawer-summary-row">
+        <span>Express Tracked Dispatch</span>
+        <span style="color: var(--volt-green);">FREE</span>
+      </div>
+      <div class="drawer-total-row">
+        <span>Total Due</span>
+        <span id="drawerTotal">$0.00 USD</span>
+      </div>
+
+      <a href="checkout.html" class="btn-primary drawer-checkout-btn">
+        PROCEED TO SECURE CHECKOUT →
+      </a>
+
+      <div style="margin-top: 14px; text-align: center; font-family: var(--font-mono); font-size: 0.68rem; color: var(--text-muted); display: flex; justify-content: space-around;">
+        <span>🔒 256-BIT ENCRYPTION</span>
+        <span>50KM TRIAL GUARANTEE</span>
+        <span>FREE RETURNS</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+  <script src="assets/js/products-data.js"></script>
+  <script src="assets/js/cart.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/3d-effects.js"></script>
+</body>
+</html>
